@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Biblioteca Escolar</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #f0f0f0;
+    }
+    #login-box {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+    input {
+      padding: 8px;
+      margin: 10px 0;
+      width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      padding: 10px;
+      background: #4CAF50;
+      border: none;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+    }
+    button:hover {
+      background: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+<div id="login-box">
+  <h2>Acceso Biblioteca</h2>
+  <input type="password" id="password" placeholder="Contraseña">
+  <button onclick="login()">Entrar</button>
+  <p id="error" style="color:red;display:none;">Contraseña incorrecta</p>
+</div>
+
+<script>
+  function login() {
+    const pass = document.getElementById("password").value;
+    if(pass === "biblioteca cuahutemoc"){
+      // Guardar sesión en el navegador
+      localStorage.setItem("loggedIn", "true");
+      // Redirigir al sistema principal
+      window.location.href = "sistema.html";
+    } else {
+      document.getElementById("error").style.display = "block";
+    }
+  }
+
+  // Si ya inició sesión antes, mandarlo directo
+  if(localStorage.getItem("loggedIn") === "true"){
+    window.location.href = "sistema.html";
+  }
+</script>
+
+</body>
+</html>
